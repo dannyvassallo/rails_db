@@ -2,6 +2,7 @@ module RailsDb
   class ApplicationController < ActionController::Base
     helper :all
     helper_method :per_page
+    helper_method :current_user
 
     if Rails::VERSION::MAJOR >= 4
       before_action :verify_access
@@ -23,6 +24,10 @@ module RailsDb
 
     def per_page
       params[:per_page] || session[:per_page]
+    end
+
+    def current_user
+      @current_user ||= CamaleonCms::User.find(session[:current_user]["id"]) if session[:current_user]
     end
 
   end
