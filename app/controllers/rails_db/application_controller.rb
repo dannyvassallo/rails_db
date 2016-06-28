@@ -15,6 +15,10 @@ module RailsDb
                                    password: RailsDb.http_basic_authentication_password
     end
 
+    def current_user
+      @current_user ||= CamaleonCms::User.find(session[:current_user]["id"]) if session[:current_user]
+    end
+
     private
 
     def verify_access
@@ -24,10 +28,6 @@ module RailsDb
 
     def per_page
       params[:per_page] || session[:per_page]
-    end
-
-    def current_user
-      @current_user ||= CamaleonCms::User.find(session[:current_user]["id"]) if session[:current_user]
     end
 
   end
