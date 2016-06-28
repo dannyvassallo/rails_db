@@ -5,7 +5,7 @@ module RailsDb
     end
 
     def current_user
-      @current_user ||= CamaleonCms::User.find(session[:current_user]["id"]) if session[:current_user]
+      @current_user ||= session[:current_user] if session[:current_user]
     end
 
     def link_to_add_fields(name, f, type)
