@@ -1,4 +1,4 @@
-include ApplicationHelper
+include RailsDb::ApplicationHelper
 
 module RailsDb
   class DashboardController < RailsDb::ApplicationController
